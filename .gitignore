@@ -1,0 +1,6 @@
+bin/
+fetch_log*
+recover_log*
+node_modules/
+data/
+undefined/
