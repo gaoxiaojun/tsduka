@@ -6,7 +6,7 @@ const { preserveShebangs } = require('rollup-plugin-preserve-shebangs');
 const pkg = require('./package.json');
 
 module.exports = {
-  input: ['src/cli.ts', 'src/recover.ts'],
+  input: ['src/cli.ts', 'src/recover.ts', 'src/update.ts'],
   output: {
     format: 'cjs',
     dir: 'bin'
