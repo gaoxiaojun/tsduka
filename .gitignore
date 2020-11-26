@@ -4,3 +4,4 @@ recover_log*
 node_modules/
 data/
 undefined/
+*-lock.json
