@@ -5,16 +5,9 @@ import { existsSync, mkdirSync} from 'fs'
 
 export type NetworkErrorCB = (instrument: string, day:string) => void;
 
-export function getMinStartDate(inst:string)
-{
-  const instrument = inst.toLowerCase() as InstrumentType
-  const { minStartDate } = instruments[instrument]
-  return minStartDate
-}
-
 export async function duka_fetch(inst: string, fromUtcDate: Date, toUtcDate: Date, floderPath: string, netErrorCallback: NetworkErrorCB) {
   const instrument = inst.toLowerCase() as InstrumentType
-  const minStartDate = getMinStartDate(inst)
+  const { minStartDate } = instruments[instrument]
   const startDate = new Date(minStartDate)
 
   startDate.setDate(startDate.getDate() + 1) // actual start day is the day after minStartDay
