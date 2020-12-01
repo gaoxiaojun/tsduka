@@ -33,5 +33,6 @@ export function splitArrayInChunks<T>(array: T[], chunkSize: number): T[][] {
 
 export const recoverLogFileName = 'recover_log.txt'
 export const fetchLogFileName = 'fetch_log.txt'
+export const updateLogFileName = 'update_log.txt'
 export const mergeLogFileName = 'merge_log.txt'
 export const aggregatorFileName = 'aggregator_log.txt'

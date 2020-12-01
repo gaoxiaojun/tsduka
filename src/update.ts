@@ -1,7 +1,7 @@
 import { program } from 'commander'
 import { createWriteStream, readdirSync, lstatSync } from 'fs'
 import { duka_fetch, NetworkErrorCB } from './duka-fetch'
-import { newUTCDate, fetchLogFileName } from './utils'
+import { newUTCDate, updateLogFileName } from './utils'
 
 async function download(instruments: string[], dir: string, cb: NetworkErrorCB) {
     for (let inst of instruments) {
@@ -24,7 +24,7 @@ program
     .version('0.0.1')
     .description("A CLI for update dukascopy historical tick")
     .option('-dir, --directory <path>', 'Download data save directory', 'data')
-    .option('-log, --logger <filename>', 'fetch error logger filename', fetchLogFileName)
+    .option('-log, --logger <filename>', 'fetch error logger filename', updateLogFileName)
     .parse(process.argv);
 
 const options = program.opts();
