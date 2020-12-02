@@ -1,5 +1,5 @@
 import { program } from 'commander'
-import { createWriteStream, readFileSync, readdirSync } from 'fs'
+import { createWriteStream, readFileSync, readdirSync, lstatSync } from 'fs'
 import { exit } from 'process'
 
 program
@@ -16,11 +16,17 @@ if (options.file === undefined || options.directory === undefined) {
     exit(1)
 }
 
-const os = createWriteStream(options.file, {
-    flags: 'w'
-})
+// check is directory
+const stat = lstatSync(options.directory)
+if (stat.isDirectory() !== true) {
+    program.help()
+    exit(2)
+}
+
+const os = createWriteStream(options.file, { flags: 'w' })
 
 const files = readdirSync(options.directory).sort()
+console.log('files count:' + files.length)
 files.forEach(function (f, index) {
     const filePath = `${options.directory}/${f}`
     const content = readFileSync(filePath)
