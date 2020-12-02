@@ -7,7 +7,7 @@ import { newUTCDate, fetchLogFileName } from './utils'
 async function download(instruments: string, dateFrom: Date, dateTo: Date, dir: string, cb: NetworkErrorCB) {
     const insts: string[] = options.instrument.split(',')
     for (let inst of insts) {
-        await duka_fetch(inst, dateFrom, dateTo, options.directory, cb)
+        await duka_fetch(inst, dateFrom, dateTo, dir, cb)
     }
 }
 
